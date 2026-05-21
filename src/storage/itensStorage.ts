@@ -1,12 +1,12 @@
 import AsyncStrorage from '@react-native-async-storage/async-storage'
 
 
-const ITENS_STORAGE_KEY = '@listacompras:itens'
+const ITENS_STORAGE_KEY = '@estacionamentocarros:itens'
 
 export type ItemStorage = {
     id: string,
+    placa: string,
     horario: Date,
-    description: string
 }
 
 // função base para consulta de dados
@@ -35,15 +35,6 @@ async function add(newItem: ItemStorage): Promise<ItemStorage[]> {
     return updateItem
 }
 
-
-async function clear() {
-    try {
-        await AsyncStrorage.removeItem(ITENS_STORAGE_KEY)
-    } catch (error) {
-        throw new Error("ITEM_CLEAR; " + error)
-    }
-}
-
 async function remove(id: string) {
     const items = await get()
     const updateItens = items.filter((item) => item.id !== id)
@@ -53,6 +44,5 @@ async function remove(id: string) {
 export const fnStorage = {
     add,
     get,
-    clear,
     remove
 }

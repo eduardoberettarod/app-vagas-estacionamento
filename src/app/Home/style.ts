@@ -62,5 +62,18 @@ export const style = StyleSheet.create({
     countVacancy: {
         color: '#eee',
         borderRadius: 12
+    },
+    separator: {
+        width: '100%',
+        marginVertical: 4
+    },
+    listContent: {
+        paddingTop: 24,
+        paddingBottom: 62
+    },
+    empty: {
+        fontSize: 14,
+        color: '#808080',
+        textAlign: 'center'
     }
 });
