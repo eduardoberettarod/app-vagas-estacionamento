@@ -104,7 +104,7 @@ export default function Home() {
                 </View>
                 <View>
                     <TouchableOpacity style={style.buttonHeader}>
-                        <Feather name="grid" size={24} color="black" />
+                        <Feather name="grid" size={18} color="black" />
                     </TouchableOpacity>
                 </View>
             </View>
