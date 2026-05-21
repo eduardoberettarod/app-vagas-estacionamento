@@ -20,24 +20,24 @@ async function get(): Promise<ItemStorage[]> {
 }
 
 // função base para salvar todos os dados
-async function save(itens: ItemStorage[]): Promise<void> {
+async function save(car: ItemStorage[]): Promise<void> {
     try {
-        await AsyncStrorage.setItem(ITENS_STORAGE_KEY, JSON.stringify(itens))
+        await AsyncStrorage.setItem(ITENS_STORAGE_KEY, JSON.stringify(car))
     } catch (error) {
         throw new Error("ITEM_SAVE: " + error)
     }
 }
 
-async function add(newItem: ItemStorage): Promise<ItemStorage[]> {
-    const itens = await get()
-    const updateItem = [...itens, newItem]
+async function add(newCar: ItemStorage): Promise<ItemStorage[]> {
+    const car = await get()
+    const updateItem = [...car, newCar]
     await save(updateItem)
     return updateItem
 }
 
 async function remove(id: string) {
     const items = await get()
-    const updateItens = items.filter((item) => item.id !== id)
+    const updateItens = items.filter((car) => car.id !== id)
     await save(updateItens)
 }
 

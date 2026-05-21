@@ -12,7 +12,7 @@ import Card from '@/components/Card';
 export default function Home() {
 
     const [placa, setPlaca] = useState('')
-    const [itens, setItens] = useState<ItemStorage[]>([])
+    const [car, setCar] = useState<ItemStorage[]>([])
 
     function adcionarItem() {
         
@@ -22,17 +22,17 @@ export default function Home() {
             return Alert.alert('Adicionar', 'Informe a placa do carro para adicionar.')
         }
 
-        const newItem: ItemStorage = {
+        const newCar: ItemStorage = {
             id: Math.random().toString(36),
             placa,
             horario
         }
 
-        fnStorage.add(newItem)
+        fnStorage.add(newCar)
 
         Alert.alert("Adcionando", `O carro da placa ${placa} foi inserido com sucesso!`)
 
-        setItens([...itens, newItem])
+        setCar([...car, newCar])
 
         setPlaca('')
 
@@ -41,7 +41,7 @@ export default function Home() {
     async function get() {
         try {
             const response = await fnStorage.get()
-            setItens(response)
+            setCar(response)
         } catch (error) {
             Alert.alert("Error", "Não foi possível apagar o item")
         }
@@ -55,7 +55,7 @@ export default function Home() {
         //diferença de entrada e saida do veiculo
         const diferenca = saida.getTime() - entrada.getTime()
 
-        // pega a diferença de horas e come o cu de quem ta lendo
+        
         const horas = Math.ceil(diferenca / (1000 * 60 * 60))
 
         let newValor = 5
@@ -130,8 +130,8 @@ export default function Home() {
                 </View>
 
                 <FlatList
-                    data={itens}
-                    renderItem={({ item }) => (
+                    data={car}
+                    renderItem={({ item }) => (    
                         <Card data={item}
                             onCheckout={() => checkoutCarro(item.id, item.horario)}
                         />
